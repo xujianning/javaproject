@@ -14,22 +14,23 @@ public class User {
 	}
 	void creat() throws IOException{
 		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-		//µÈ´ıÊäÈëÓÃ»§Ãû
+		//ç­‰å¾…è¾“å…¥ç”¨æˆ·å
 		name=bf.readLine();
-		//µÈ´ıÊäÈëÃÜÂë
+		//ç­‰å¾…è¾“å…¥å¯†ç 
 		code=bf.readLine();
 		
 	}
-	void load() throws IOException{
+	int load() throws IOException{
 		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
 		String n,c;
-		//ÌáÊ¾ÊäÈëÓÃ»§Ãû
+		//æç¤ºè¾“å…¥ç”¨æˆ·å
 		n=bf.readLine();
-		//ÌáÊ¾ÊäÈëÃÜÂë
+		//æç¤ºè¾“å…¥å¯†ç 
 		c=bf.readLine();
-		if(n.equals(name)&c.equals(code)){
-			//µÇÂ½³É¹¦
-		}
-	}
+		if(n.equals(name)&c.equals(code))
+			return 1;//ç™»é™†æˆåŠŸ
+		else
+			return -1;//ç™»å½•å¤±è´¥	
+}
 
 }
