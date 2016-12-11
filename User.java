@@ -8,9 +8,8 @@ public class User {
 		
 		
 	}
-	User(String name,String code){
-		this.name=name;
-		this.code=code;
+	User(){
+		
 	}
 	void creat() throws IOException{
 		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
