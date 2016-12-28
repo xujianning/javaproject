@@ -3,6 +3,7 @@ import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
 public class DVDrent {
 	private static final int JLabel = 0;
 	private static final String HORIZONTAL = null;
@@ -36,19 +37,52 @@ public class DVDrent {
 		JFrame jf=new JFrame("DVD入库");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setLayout(new BorderLayout());
-		jf.setBounds(200, 200, 600, 800);
+		jf.setBounds(200, 200, 600, 120);
 		jf.setVisible(true);
-		JLabel jl=new JLabel("请输入DVD编码 名称 价格");
+		JLabel jl=new JLabel("请输入DVD8位编码 名称 价格(以空格区分)");
 		jl.setHorizontalAlignment(JLabel);
-		
+
+		final ArrayList<DVD> list = new ArrayList<DVD>();
 		jf.getContentPane().add(jl,BorderLayout.NORTH);
 		JButton button=new JButton("输入");
-		JTextArea jt=new JTextArea();
+		final JTextField jt=new JTextField();
 		jt.setEditable(true);
-		jf.getContentPane().add(jt,BorderLayout.CENTER);
 		
-		Mouselistener5 m=new Mouselistener5();
-		button.addActionListener(m);
+		jf.getContentPane().add(jt,BorderLayout.CENTER);
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					FileWriter fw=new FileWriter(".\\DVD.txt");
+					DVD d=new DVD();
+					list.add(d);
+					/*for(int i=0;i<jt.getText().length();i++)
+					{
+						int flag=0;
+						for(int j=0;j<list.size();j++){
+							if(jt.getText()!=" "&&flag<9){
+								list.get(j).code+=jt.getText();
+								flag++;
+							}
+							else if(jt.getText()!=" "&&flag>=9&&flag<19){
+								list.get(j).name+=jt.getText();
+								flag++;
+							}
+							else if(jt.getText()!=" "&&flag>=19){
+								list.get(j).cost+=jt.getText();
+								flag++;
+							}
+						}
+						
+					}*/
+					fw.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}});
+		//Mouselistener5 m=new Mouselistener5();
+		//button.addActionListener(m);
 		jf.getContentPane().add(button,BorderLayout.SOUTH);
 }
 	void rent(){
@@ -113,7 +147,22 @@ class Mouselistener4 implements ActionListener{
 	}
 class Mouselistener5 implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("asda");
+		
+		
 	}
 
 }
+class DVD {
+
+	
+	String name;
+	String code;
+	String cost;
+	
+}
+class Customer {
+	String name;
+	String id;
+	String dvdcode;
+}
+
